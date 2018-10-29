@@ -7,9 +7,20 @@
 //
 
 #include <iostream>
+#include "BST.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+int main() {
+    
+    BST myBST = BST();
+    myBST.insert(5, myBST.getRoot());
+    myBST.insert(6, myBST.getRoot());
+    myBST.insert(11, myBST.getRoot());
+    myBST.insert(2, myBST.getRoot());
+    // myBST.printInOrder(myBST.getRoot());
+    
+    
+    
     return 0;
 }
