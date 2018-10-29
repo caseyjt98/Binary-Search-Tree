@@ -15,12 +15,14 @@ using namespace std;
 int main() {
     
     BST myBST = BST();
-    bool isEmpty = myBST.isEmpty();
-    assert(isEmpty == 1);
+    assert(myBST.isEmpty() == 1);               // should return true
+    
     myBST.insert(5, myBST.getRoot());
+    assert(myBST.isEmpty() == 0);               // should return false
     myBST.insert(6, myBST.getRoot());
     myBST.insert(11, myBST.getRoot());
     myBST.insert(2, myBST.getRoot());
+   
     myBST.printInOrder(myBST.getRoot());
     
     

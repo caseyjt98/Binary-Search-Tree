@@ -25,6 +25,7 @@ void BST::insert(const int& val, Node* cur) {
     if (m_root == NULL) {
         // insert node as root and DONE
         m_root = new Node(val);
+        m_numNodes++;                   // update size
         return;
     }
     
@@ -45,6 +46,7 @@ void BST::insert(const int& val, Node* cur) {
         else {
             Node* newGuy = new Node(val);
             cur->left = newGuy;
+            m_numNodes++;                   // update size
             return; // DONE
         }
 
@@ -55,11 +57,11 @@ void BST::insert(const int& val, Node* cur) {
         if (cur->right != NULL)
            insert(val, cur->right);
         
-        
         // else, you've found your point of insertion
         else {
             Node* newGuy = new Node(val);
             cur->right = newGuy;
+            m_numNodes++;                   // update size
             return; // DONE
         }
     }

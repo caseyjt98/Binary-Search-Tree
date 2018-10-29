@@ -28,17 +28,18 @@ struct Node {
 class BST {
     
 public:
-    BST () { m_root = NULL; }
-    
+    BST () { m_root = NULL;
+            m_numNodes = 0; }
     void insert(const int& val, Node* cur);
     void printInOrder(Node* root);
     bool isEmpty(); 
-    
+    int size() { return this->m_numNodes; }
     Node* getRoot() { return this->m_root; }
     
     
 private:
     Node* m_root;
+    int m_numNodes;
 };
 
 
