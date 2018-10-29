@@ -31,6 +31,8 @@ public:
     BST () { m_root = NULL;
             m_numNodes = 0; }
     void insert(const int& val, Node* cur);
+    void deleteNode(const int& val, Node* cur); // implement this
+    bool findValue(const int& val, Node* root);
     void printInOrder(Node* root);
     bool isEmpty(); 
     int size() { return this->m_numNodes; }

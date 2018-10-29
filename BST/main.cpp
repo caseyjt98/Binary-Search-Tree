@@ -19,7 +19,9 @@ int main() {
     
     myBST.insert(5, myBST.getRoot());
     assert(myBST.isEmpty() == 0);               // should return false
+    assert(myBST.findValue(6, myBST.getRoot()) == 0);
     myBST.insert(6, myBST.getRoot());
+    assert(myBST.findValue(6, myBST.getRoot()) == 1);
     myBST.insert(11, myBST.getRoot());
     myBST.insert(2, myBST.getRoot());
    
