@@ -10,12 +10,42 @@
 #include <iostream>
 using namespace std;
 
+// clear the tree
+void BST::FreeTree(Node* cur) {
+    // if empty, DONE
+    if (cur == NULL)
+        return; // DONE
+    
+    FreeTree(cur->left);
+    FreeTree(cur->right);
+    delete cur;
+}
+
+
+BST::~BST() {
+    FreeTree(m_root); // call FreeTree function, starting at the root
+}
+
+
 // check if empty
 bool BST::isEmpty() {
     if (m_root == NULL)
         return true;
     // else
     return false;
+}
+
+// traverse from root and print each node's value using in order traversal (ascending order)
+void BST::printInOrder(Node* root) {
+    
+    // if empty, DONE
+    if (root == NULL)
+        return; // DONE
+    
+    printInOrder(root->left);
+    cout << root->m_value;
+    cout << "-";
+    printInOrder(root->right);
 }
 
 
@@ -98,12 +128,11 @@ bool BST::findValue(const int& val, Node* root)
 
 
 /*
-// delete an item from BST
+// delete an item by value from BST
 void BST::deleteNode(const int& val, Node* cur) {
     // check if tree is empty
     if (m_root == NULL)
         return;             // DONE
-    
     
     // traverse to find value to be deleted
     
@@ -137,25 +166,8 @@ void BST::deleteNode(const int& val, Node* cur) {
     
     return; // no matching value found
     
-    
-    
-    
 }
+
 
 */
 
-
-
-// traverse from root and print each node's value using in order traversal (ascending order)
-void BST::printInOrder(Node* root) {
-    
-    // if empty, DONE
-    if (root == NULL)
-        return; // DONE
-    
-    printInOrder(root->left);
-    cout << root->m_value;
-    cout << "-";
-    printInOrder(root->right);
-    
-}

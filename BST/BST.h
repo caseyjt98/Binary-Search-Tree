@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
+///////////////////////////////////////////// NODE STRUCT //////////////////////////////////////////////
 struct Node {
     
     Node(const int& val) {
@@ -25,17 +26,26 @@ struct Node {
 };
 
 
+/////////////////////////////////////////////// BST CLASS //////////////////////////////////////////////
 class BST {
     
 public:
     BST () { m_root = NULL;
             m_numNodes = 0; }
+    ~BST();
+    void FreeTree(Node* cur);
     void insert(const int& val, Node* cur);
-    void deleteNode(const int& val, Node* cur); // implement this
+    void deleteNode(const int& val, Node* cur); 
     bool findValue(const int& val, Node* root);
     void printInOrder(Node* root);
     bool isEmpty(); 
     int size() { return this->m_numNodes; }
+    
+    // implement these
+    int findMin();
+    int findMax();
+    int getHeight();
+    
     Node* getRoot() { return this->m_root; }
     
     
@@ -43,18 +53,6 @@ private:
     Node* m_root;
     int m_numNodes;
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
