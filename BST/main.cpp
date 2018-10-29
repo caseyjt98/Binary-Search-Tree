@@ -18,7 +18,7 @@ int main() {
     myBST.insert(6, myBST.getRoot());
     myBST.insert(11, myBST.getRoot());
     myBST.insert(2, myBST.getRoot());
-    // myBST.printInOrder(myBST.getRoot());
+    myBST.printInOrder(myBST.getRoot());
     
     
     

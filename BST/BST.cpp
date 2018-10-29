@@ -58,16 +58,16 @@ void BST::insert(const int& val, Node* cur) {
    
 }
 
-// traverse from root and print each node's value using in order traversal
+// traverse from root and print each node's value using in order traversal (ascending order)
 void BST::printInOrder(Node* root) {
-    // start at root
     
-    while (root != NULL) {
-        printInOrder(root->left);
-        cout << root->m_value;
-        printInOrder(root->right);
-    }
-
-    return;
+    // if empty, DONE
+    if (root == NULL)
+        return; // DONE
+    
+    printInOrder(root->left);
+    cout << root->m_value;
+    cout << "-";
+    printInOrder(root->right);
     
 }
