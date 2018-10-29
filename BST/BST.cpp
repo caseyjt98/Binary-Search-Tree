@@ -10,6 +10,14 @@
 #include <iostream>
 using namespace std;
 
+// check if empty
+bool BST::isEmpty() {
+    if (m_root == NULL)
+        return true;
+    // else
+    return false;
+}
+
 
 // insert new value into tree
 void BST::insert(const int& val, Node* cur) {

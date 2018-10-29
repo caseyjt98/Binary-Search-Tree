@@ -32,8 +32,10 @@ public:
     
     void insert(const int& val, Node* cur);
     void printInOrder(Node* root);
+    bool isEmpty(); 
     
     Node* getRoot() { return this->m_root; }
+    
     
 private:
     Node* m_root;
