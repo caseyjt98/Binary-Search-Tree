@@ -185,7 +185,32 @@ void BST::deleteNode(const int& val) {
                 }
             }
             
-            // case 2: node being deleted has one child
+            // case 2: node being deleted has two children
+            else if (cur->left != NULL && cur->right != NULL) {
+                
+                
+                // ADD CASE OF ROOT NODE
+                
+                // get largest value from left subtree and copy it up to current node
+                // ^ this is not what the code is doing -- fix this. 
+                Node* maxNode = cur;
+                int maxValLeftSubtree = cur->m_value;
+                
+                // go all the way to the right
+                while (maxNode != NULL) {
+                    maxValLeftSubtree = maxNode->m_value;
+                    maxNode = maxNode->right;
+                }
+                
+                // copy value up
+                cur->m_value = maxValLeftSubtree;
+                // delete old node
+                delete maxNode;
+                m_numNodes--;
+                return;
+            }
+            
+            // case 3: node being deleted has one child
             else if (cur->left != NULL || cur->right != NULL) {
                 
                 // subcase 1: target node is root node
@@ -221,31 +246,6 @@ void BST::deleteNode(const int& val) {
                 return;
             }
             
-            // case 3: node being deleted has two children
-            else if (cur->left != NULL && cur->right != NULL) {
-                
-                
-                // ADD CASE OF ROOT NODE
-                
-                // get largest value from left subtree and copy it up to current node
-                
-                Node* maxNode = cur;
-                int maxValLeftSubtree = cur->m_value;
-                
-                // go all the way to the right
-                while (cur != NULL) {
-                    maxValLeftSubtree = cur->m_value;
-                    maxNode = cur->right;
-                    cur = cur->right;
-                }
-                
-                // copy value up
-                cur->m_value = maxValLeftSubtree;
-                // delete old node
-                delete maxNode;
-                m_numNodes--;
-                return;
-            }
     
         }
         
