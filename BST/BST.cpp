@@ -186,7 +186,7 @@ void BST::deleteNode(const int& val) {
             }
             
             // case 2: node being deleted has one child
-            if (cur->left != NULL || cur->right != NULL) {
+            else if (cur->left != NULL || cur->right != NULL) {
                 
                 // subcase 1: target node is root node
                 if (cur == m_root) {
@@ -197,16 +197,32 @@ void BST::deleteNode(const int& val) {
                 }
                 // subcase 2: target node is not root node
                 else {
-                    if (cur->left != NULL)
-                        parent->left = cur->left;
-                    else
-                        parent->right = cur->right;
-                }
+                    // target node has a child
+                    Node* child = NULL;
+    
+                    if (cur->left != NULL)           // target node has a left child
+                        child = cur->left;
+                    
+                    else                            // target node has a right child
+                        child = cur->right;
+                    
+                    
+                    // if target node is in right subtree, bump up its child to be its parents right child
+                    if (cur->m_value > m_root->m_value) // right subtree
+                        parent->right = child;
+                    
+                    // if target node is in left subtree, bump up its child to be its parents left child
+                    else // left subtree
+                        parent->left = child;
+                    }
+                
                 delete cur;
+                m_numNodes--;
+                return;
             }
             
             // case 3: node being deleted has two children
-            if (cur->left != NULL && cur->right != NULL) {
+            else if (cur->left != NULL && cur->right != NULL) {
                 
                 
                 // ADD CASE OF ROOT NODE
@@ -227,16 +243,31 @@ void BST::deleteNode(const int& val) {
                 cur->m_value = maxValLeftSubtree;
                 // delete old node
                 delete maxNode;
-                
+                m_numNodes--;
+                return;
             }
     
         }
-    
         
-    }
-    
-    return;         // value not found
-    
-    
-}
+        else if (cur->m_value > val) {
+            // if you can go left, go left
+            if (cur->left != NULL) {
+                parent = cur;
+                cur = cur->left;
+            }
+        }
+        
+        else if (cur->m_value < val) {
+            // if you can go left, go left
+            if (cur->right != NULL) {
+                parent = cur;
+                cur = cur->right;
+            }
+        }
 
+        // value not found
+    
+    }
+    return;
+
+}
