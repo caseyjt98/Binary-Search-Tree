@@ -35,7 +35,7 @@ public:
     ~BST();
     void FreeTree(Node* cur);
     void insert(const int& val, Node* cur);
-    void deleteNode(const int& val, Node* cur); 
+    void deleteNode(const int& val);
     bool findValue(const int& val, Node* root);
     void printInOrder(Node* root);
     bool isEmpty(); 
@@ -43,7 +43,7 @@ public:
     
     // implement these
     int findMin();
-    int findMax();
+    int findMax(Node* cur);
     int getHeight();
     
     Node* getRoot() { return this->m_root; }
